@@ -4,7 +4,7 @@
 Allows to start/stop timers for time spent on an issue from a separate tab
 
 == Compatibility
-This plugin is tested with the trunk version fo redmine. If you are sucessfully using it with other versions, please "report it to me":http://github.com/benfante.
+This plugin is tested with the trunk version of redmine. If you are sucessfully using it with other versions, please {report it to me}[http://github.com/benfante].
 
 == Install
 
