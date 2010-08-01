@@ -3,14 +3,11 @@ unloadable
 
   def index
     @active_effort = UserEffort.find(:first, :conditions => {:user_id => User.current.id})
-    @issues = Issue.find(:all, :conditions => {:assigned_to_id => User.current.id}, :order => "project_id")
-    
-    @issued_projects = Hash.new("")
-    @issues.each do |issue|  
-      if !@issued_projects.has_key?(issue.project_id)
-        @issued_projects[issue.project_id] = Project.find(issue.project_id).to_s
-      end
-    end
+    projects = Project.active.find(:all, :select => 'id, name')
+    @issues = Issue.find(:all, :conditions => {:assigned_to_id => User.current.id, :project_id => projects.map(&:id) }, :order => "project_id")
+
+    @issued_projects = {}
+    projects.each { |project| @issued_projects[project.id] = project.to_s }
 
     @hours_stock = Hash.new(0)
     @issues.each do |issue|
