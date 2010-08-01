@@ -1,0 +1,6 @@
+.DS_Store
+coverage
+doc
+pkg
+rdoc
+nbproject/
